@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 22:59:42 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:33:29 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,33 @@ int create_tab_map_and_flood_fill_map(t_solong *data)
     int fd;
     char *line;
     char *tmp;
+    char *map_in_line;
+    
+    fd = open(data->ber_file, O_RDONLY);
+    if (fd < 0)
+        return (Failure_open);
+    line = get_next_line(fd);
+    if (!line)
+        return (Failure_malloc);
+    map_in_line = ft_strdup("");
+    while (line != NULL)
+    {
+        tmp = map_in_line;
+        map_in_line = ft_strjoin(tmp, line);
+        if (!map_in_line)
+            return (Failure_malloc);
+        free(tmp);
+        free(line);
+        line = get_next_line(fd);
+    }
+    data->tab_map = ft_split(map_in_line, '\n');
+    if (!data->tab_map)
+        return (free(map_in_line), Failure_malloc);
+    data->flood_fill_map = ft_split(map_in_line, '\n');
+    if (!data->flood_fill_map)
+        return(free(map_in_line), Failure_malloc);
+    free(map_in_line);
+    return (Success);
 }
 
 int initialize_data_struct(t_solong *data, char **argv)

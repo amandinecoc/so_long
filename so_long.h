@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 22:36:00 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:21:20 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef enum e_status
 	Failure_nbr_arg,
 	Failure_map,
     Failure_malloc,
+	Failure_open,
 }			t_status;
 
 typedef struct s_solong
