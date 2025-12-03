@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 16:26:42 by acocoual          #+#    #+#             */
-/*   Updated: 2025/09/25 13:48:04 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:09:39 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 long long		ft_atoll(const char *nptr);
+char			*get_next_line(int fd);
 // Bonus
 // t_list *ft_lstnew(void *content);
 // void ft_lstadd_front(t_list **lst, t_list *new);

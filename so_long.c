@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 19:37:48 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/03 22:59:42 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void free_tab(char **tab)
 
 void free_all_data_struct(t_solong *data)
 {
-    if (data->str_map != NULL)
-        free(data->str_map);
+    if (data->ber_file != NULL)
+        free(data->ber_file);
     if (data->tab_map[0] != NULL)
         free_tab(data->tab_map);
     if (data->tab_map != NULL && data->tab_map[0] == NULL)
@@ -51,36 +51,55 @@ int check_and_fill_nbr(t_solong *data)
     
 }
 
-int create_tab_map(t_solong *data)
+int create_tab_map_and_flood_fill_map(t_solong *data)
 {
-    
+    int fd;
+    char *line;
+    char *tmp;
 }
 
 int initialize_data_struct(t_solong *data, char **argv)
 {
     int status;
 
-    data->str_map = strdup(argv[1]);
+    data->ber_file = strdup(argv[1]);
+    if (!data->ber_file)
+        return (Failure_malloc);
     data->tab_map = NULL;
     data->flood_fill_map = NULL;
-    status = create_tab_map(data);
-    if (status != Success)
-        return (free(data->str_map), status);
     data->nbr_collectibles = 0;
     data->nbr_exit = 0;
     data->nbr_player = 0;
-    status = check_and_fill_nbr(data);
-    if (status != Success)
-        return (free_all_data_struct(data), status);
     data->exit = malloc(sizeof(int) * 2);
     if (!data->exit)
         return (free_all_data_struct(data), status);
     data->exit[0] = 0;
     data->exit[1] = 0;
+    data->mouv = 0;
+    return (Success);
+}
+
+int fill_data_struct(t_solong *data, char **argv)
+{
+    int status;
+    
+    status = initialize_data_struct(data, argv);
+    if (status != Success)
+        return (status);
+    if (ft_strnstr(data->ber_file, ".ber", ft_strlen(data->ber_file)) != NULL) //je peux juste verifier si ber_file[0] est lettre puis strnstr
+    {
+        if ((ft_strlen(data->ber_file) - 5) <= 'a' || (ft_strlen(data->ber_file) - 5) >= 'z')
+            return (free_all_data_struct(data), Failure_map);
+    }
+    status = create_tab_map_and_flood_fill_map(data);
+    if (status != Success)
+        return (free(data->ber_file), status);
+    status = check_and_fill_nbr(data);
+    if (status != Success)
+        return (free_all_data_struct(data), status);
     status = find_location_exit_in_map(data);
     if (status != Success)
         return (free_all_data_struct(data), status);
-    data->mouv = 0;
     return (Success);
 }
 
@@ -104,7 +123,7 @@ int main(int argc, char **argv)
     status = Success;
     if (argc != 2)
         return (print_error_or_success(Failure_nbr_arg), EXIT_FAILURE);
-    status = initialize_data_struct(&data, argv);
+    status = fill_data_struct(&data, argv);
     if (status != Success)
         return (print_error_or_success(status), EXIT_FAILURE);
 }

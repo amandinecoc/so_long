@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+         #
+#    By: amandine <amandine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/23 21:53:09 by amandine          #+#    #+#              #
-#    Updated: 2025/12/01 19:49:46 by acocoual         ###   ########.fr        #
+#    Updated: 2025/12/03 23:12:38 by amandine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SOURCES_LIBFT += libft/ft_strmapi.c
 SOURCES_LIBFT += libft/ft_strtrim.c
 SOURCES_LIBFT += libft/ft_substr.c
 SOURCES_LIBFT += libft/ft_atoll.c
+SOURCES_LIBFT += libft/get_next_line/get_next_line.c
+SOURCES_LIBFT += libft/get_next_line/get_next_line_utils.c
 
 SOURCES_SO_LONG += so_long.c
 SOURCES_SO_LONG += parsing.c
@@ -89,7 +91,9 @@ OBJ := ft_atoi.o \
 	ft_strtrim.o \
 	ft_substr.o \
 	ft_tolower.o \
-	ft_toupper.o
+	ft_toupper.o \
+	get_next_line_utils.o \
+	get_next_line.o \
 	
 DIR = obj/
 

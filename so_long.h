@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 19:03:32 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/03 22:36:00 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_solong
 {
 	char	**tab_map;
 	char	**flood_fill_map;
-	char	*str_map;
+	char	*ber_file;
 	int     nbr_collectibles;
     int     nbr_exit;
     int     nbr_player;
