@@ -6,15 +6,39 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 19:27:15 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:37:48 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int free_all_data_struct(t_solong *data)
+void free_tab(char **tab)
 {
-    
+    int i;
+
+    i = 0;
+    while (tab[i])
+    {
+        free(tab[i]);
+        i++;
+    }
+    free(tab);
+}
+
+void free_all_data_struct(t_solong *data)
+{
+    if (data->str_map != NULL)
+        free(data->str_map);
+    if (data->tab_map[0] != NULL)
+        free_tab(data->tab_map);
+    if (data->tab_map != NULL && data->tab_map[0] == NULL)
+        free(data->tab_map);
+    if (data->flood_fill_map[0] != NULL)
+        free_tab(data->flood_fill_map);
+    if (data->flood_fill_map != NULL && data->flood_fill_map[0] == NULL)
+        free(data->flood_fill_map);
+        
+    // finir
 }
 
 int find_location_exit_in_map(t_solong *data)
