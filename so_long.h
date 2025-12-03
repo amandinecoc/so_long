@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/01 19:56:05 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:03:32 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,26 @@
 
 /* ************************************************************************** */
 /*TYPEDEF*/
-// typedef enum e_status
-// {
-// 	Success,
-// 	malloc_failure,
-// 	command_not_found,
-// }			t_status;
+typedef enum e_status
+{
+	Success,
+    You_win,
+	Failure_nbr_arg,
+	Failure_map,
+    Failure_malloc,
+}			t_status;
 
-// typedef struct s_pipex
-// {
-// 	char	*file1;
-// 	char	*cmd1;
-// 	char	*file2;
-// 	char	*cmd2;
-// 	char	**tab_cmd1;
-// 	char	**tab_cmd2;
-// 	char	**tab_path;
-// }			t_pipex;
+typedef struct s_solong
+{
+	char	**tab_map;
+	char	**flood_fill_map;
+	char	*str_map;
+	int     nbr_collectibles;
+    int     nbr_exit;
+    int     nbr_player;
+    int     *exit;
+    int     mouv;
+}			t_solong;
 
 /* ************************************************************************** */
 /*PARSING*/
