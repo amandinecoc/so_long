@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 05:40:50 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 06:44:50 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_solong
 	int		nbr_collectibles;
 	int		nbr_exit;
 	int		nbr_player;
-	int		len_i;
-	int		len_j;
+	int		height;
+	int		width;
 	int		*exit;
 	int		*player;
 	int		mouv;
@@ -54,6 +54,7 @@ typedef struct s_solong
 
 /* ************************************************************************** */
 /*PARSING*/
+int			parsing_so_long(t_solong *data, char **argv);
 int			fill_data_struct(t_solong *data, char **argv);
 int			initialize_data_struct(t_solong *data, char **argv);
 int			create_tab_map_and_flood_fill_map(t_solong *data);

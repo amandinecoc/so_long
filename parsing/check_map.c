@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:43:39 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:06:34 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 06:36:07 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	check_borders_of_map(t_solong *data)
 
 	i = 0;
 	j = 0;
-	while (i < data->len_i)
+	while (i < data->height)
 	{
 		j = 0;
-		while (j < data->len_j)
+		while (j < data->width)
 		{
 			if (data->tab_map[0][j] != '1')
 				return (Failure_map);
-			else if (data->tab_map[data->len_i - 1][j] != '1')
+			else if (data->tab_map[data->height - 1][j] != '1')
 				return (Failure_map);
-			else if ((j == 0 || j == data->len_j) && data->tab_map[i][j] != '1')
+			else if ((j == 0 || j == data->width) && data->tab_map[i][j] != '1')
 				return (Failure_map);
 			j++;
 		}
@@ -39,16 +39,16 @@ int	check_borders_of_map(t_solong *data)
 
 int	check_square_and_borders_of_map(t_solong *data)
 {
-	data->len_j = ft_strlen(data->tab_map[0]);
-	if (data->len_j > 60)
+	data->width = ft_strlen(data->tab_map[0]);
+	if (data->width > 60)
 		return (Failure_map);
-	while (data->tab_map[data->len_i])
+	while (data->tab_map[data->height])
 	{
-		if (ft_strlen(data->tab_map[data->len_i]) != (long unsigned int)data->len_j)
+		if (ft_strlen(data->tab_map[data->height]) != (long unsigned int)data->width)
 			return (Failure_map);
-		data->len_i++;
+		data->height++;
 	}
-	if (data->len_i > 30)
+	if (data->height > 30)
 		return (Failure_map);
 	if (check_borders_of_map(data) != Success)
 		return (Failure_map);

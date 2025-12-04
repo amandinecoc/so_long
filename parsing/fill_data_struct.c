@@ -6,42 +6,11 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 05:39:54 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 06:50:42 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	check_and_fill_nbr(t_solong *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->tab_map[i])
-	{
-		j = 0;
-		while (data->tab_map[j])
-		{
-			if (data->tab_map[i][j] == 'C')
-				data->nbr_collectibles++;
-			else if (data->tab_map[i][j] == 'E')
-			{
-				data->nbr_exit++;
-				data->exit[0] = i;
-				data->exit[1] = j;
-			}
-			else if (data->tab_map[i][j] == 'P')
-            {
-				data->nbr_player++;
-                data->player[0] = i;
-                data->player[1] = j;
-            }
-			j++;
-		}
-		i++;
-	}
-}
 
 char	*create_map_in_line(int fd)
 {
@@ -97,8 +66,8 @@ int	initialize_data_struct(t_solong *data, char **argv)
 	data->nbr_collectibles = 0;
 	data->nbr_exit = 0;
 	data->nbr_player = 0;
-	data->len_i = 0;
-	data->len_j = 0;
+	data->height = 0;
+	data->width = 0;
 	data->exit = malloc(sizeof(int) * 2);
 	if (!data->exit)
 		return (free_all_data_struct(data), Failure_malloc);
@@ -135,5 +104,26 @@ int	fill_data_struct(t_solong *data, char **argv)
 	if ((data->nbr_collectibles < 1) || (data->nbr_exit != 1)
 		|| (data->nbr_player != 1))
 		return (free_all_data_struct(data), Failure_map);
+	return (Success);
+}
+
+int parsing_so_long(t_solong *data, char **argv)
+{
+	int			status;
+
+	status = Success;
+	status = fill_data_struct(data, argv);
+	if (status != Success)
+		return (print_error_or_success(status), status);
+	if (check_caracters_of_map(data) != Success)
+		return (free_all_data_struct(data),
+			print_error_or_success(Failure_map), Failure_map);
+	if (check_square_and_borders_of_map(data) != Success)
+		return (free_all_data_struct(data),
+			print_error_or_success(Failure_map), Failure_map);
+	status = check_flood_fill_map(data);
+	if (status != Success)
+		return (free_all_data_struct(data), print_error_or_success(status),
+			status);
 	return (Success);
 }

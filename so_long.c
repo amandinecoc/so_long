@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 06:01:57 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 06:54:08 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,8 @@ int	main(int argc, char **argv)
 	status = Success;
 	if (argc != 2)
 		return (print_error_or_success(Failure_nbr_arg), EXIT_FAILURE);
-	status = fill_data_struct(&data, argv);
+	status = parsing_so_long(&data, argv);
 	if (status != Success)
-		return (print_error_or_success(status), EXIT_FAILURE);
-	if (check_caracters_of_map(&data) != Success)
-		return (free_all_data_struct(&data),
-			print_error_or_success(Failure_map), Failure_map);
-	if (check_square_and_borders_of_map(&data) != Success)
-		return (free_all_data_struct(&data),
-			print_error_or_success(Failure_map), Failure_map);
-	status = check_flood_fill_map(&data);
-	if (status != Success)
-		return (free_all_data_struct(&data), print_error_or_success(status),
-			status);
-	return (Success);
+		return (status);
+	return (free_all_data_struct(&data), Success);
 }
