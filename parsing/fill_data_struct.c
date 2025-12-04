@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 12:42:10 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:08:32 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,14 +120,14 @@ int	parsing_so_long(t_solong *data, char **argv)
 	if (status != Success)
 		return (print_error_or_success(status, data), status);
 	if (check_caracters_of_map(data) != Success)
-		return (free_all_data_struct(data), print_error_or_success(Failure_map, data),
-			Failure_map);
+		return (free_all_data_struct(data), print_error_or_success(Failure_map,
+				data), Failure_map);
 	if (check_square_and_borders_of_map(data) != Success)
-		return (free_all_data_struct(data), print_error_or_success(Failure_map, data),
-			Failure_map);
+		return (free_all_data_struct(data), print_error_or_success(Failure_map,
+				data), Failure_map);
 	status = check_flood_fill_map(data);
 	if (status != Success)
-		return (free_all_data_struct(data), print_error_or_success(status, data),
-			status);
+		return (free_all_data_struct(data), print_error_or_success(status,
+				data), status);
 	return (Success);
 }

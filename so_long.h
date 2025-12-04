@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 12:39:59 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:09:40 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef enum e_status
 	Failure_open,
 	Failure_game,
 	game_escape,
+	error_asset,
 }				t_status;
 
 typedef struct s_solong
@@ -105,8 +106,10 @@ void			key_down(t_hooks *hooks);
 void			key_high(t_hooks *hooks);
 void			mlx_game(t_solong *data);
 int				movement_key(int keycode, t_hooks *hooks);
-void			initialize_assets(t_mlx *mlx_data);
+int				initialize_assets(t_mlx *mlx_data, int height, int width);
 void			initialize_wind(t_solong *data, t_mlx *mlx_data, int i, int j);
-int				close_wind(t_hooks *hooks);
+int				close_wind(t_hooks *hooks, int status);
+void			mlx_init_value(t_hooks *hooks);
+void			clean_exit_error(t_hooks *hooks, int status);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 05:01:00 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 12:23:37 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:08:35 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_flood_fill_map(t_solong *data)
 {
 	int	x;
 	int	y;
-	int cache_collectibles;
+	int	cache_collectibles;
 
 	cache_collectibles = data->nbr_collectibles;
 	x = data->player[0];
