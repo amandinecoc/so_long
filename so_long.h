@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 03:03:43 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 05:05:13 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_solong
 	int		nbr_collectibles;
 	int		nbr_exit;
 	int		nbr_player;
+	int		len_i;
+	int		len_j;
 	int		*exit;
 	int		*player;
 	int		mouv;

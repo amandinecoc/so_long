@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 03:00:15 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 04:58:17 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	free_all_data_struct(t_solong *data)
 		free_tab(data->tab_map);
 	if (data->flood_fill_map != NULL)
 		free_tab(data->flood_fill_map);
-	free(data->exit);
+	if (data->exit)
+		free(data->exit);
+	if (data->player)
+		free(data->player);
 }
 
 void	print_error_or_success(int status)

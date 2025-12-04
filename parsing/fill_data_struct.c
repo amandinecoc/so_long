@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 03:05:37 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 05:05:54 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	initialize_data_struct(t_solong *data, char **argv)
 	data->nbr_collectibles = 0;
 	data->nbr_exit = 0;
 	data->nbr_player = 0;
+	data->len_i;
+	data->len_j;
 	data->exit = malloc(sizeof(int) * 2);
 	if (!data->exit)
 		return (free_all_data_struct(data), Failure_malloc);
@@ -119,7 +121,6 @@ int	fill_data_struct(t_solong *data, char **argv)
 	if (status != Success)
 		return (status);
 	if (ft_strnstr(data->ber_file, ".ber", ft_strlen(data->ber_file)) != NULL)
-	// je peux juste verifier si ber_file[0] est lettre puis strnstr
 	{
 		if ((ft_strlen(data->ber_file) < 5)
 			|| data->ber_file[ft_strlen(data->ber_file) - 5] <= 32
