@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:08:16 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 09:51:07 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:08:51 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,25 @@ void key_left(t_solong *data)
     }
 }
 
-void movement(t_solong *data, char map, int x, int y)
+void movement(t_hooks *hooks, char map, int x, int y)
 {
     if (map == '0')
     {
-        data->tab_map[x][y] = '0';
+        hooks->data->tab_map[x][y] = '0';
         map = 'P';
-        if (data->exit[0] == x && data->exit[1] == y)
-            data->tab_map[x][y] = 'E';
+        if (hooks->data->exit[0] == x && hooks->data->exit[1] == y)
+            hooks->data->tab_map[x][y] = 'E';
     }
     if (map == 'C')
     {
-        data->tab_map[x][y] = '0';
+        hooks->data->tab_map[x][y] = '0';
         map = 'P';
-        if (data->exit[0] == x && data->exit[1] == y)
-            data->tab_map[x][y] = 'E';
+        if (hooks->data->exit[0] == x && hooks->data->exit[1] == y)
+            hooks->data->tab_map[x][y] = 'E';
     }
-    if (map == 'E' && data->nbr_collectibles == 0)
-        // end_game;
+    if (map == 'E' && hooks->data->nbr_collectibles == 0)
+    {
+        close_wind(hooks);
+        print_error_or_success(You_win);
+    }
 }

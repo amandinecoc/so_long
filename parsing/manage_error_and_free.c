@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_error_and_free.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 07:39:50 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:29:26 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void	print_error_or_success(int status)
 		ft_putendl_fd("ERROR : memory allocation", 2);
 	if (status == Failure_open)
 		ft_putendl_fd("ERROR : file descriptor", 2);
+	if (status == Failure_game)
+		ft_putendl_fd("ERROR : game", 2);
 }
