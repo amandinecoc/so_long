@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 02:48:04 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:04:06 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 	if (check_caracters_of_map(&data) != Success)
 		return (free_all_data_struct(&data),
 			print_error_or_success(Failure_map), Failure_map);
-	status = flood_fill_map(&data);
-	if (status != Success)
-		return (free_all_data_struct(&data), print_error_or_success(status),
-			status);
+	// status = flood_fill_map(&data);
+	// if (status != Success)
+	// 	return (free_all_data_struct(&data), print_error_or_success(status),
+	// 		status);
 	return (Success);
 }

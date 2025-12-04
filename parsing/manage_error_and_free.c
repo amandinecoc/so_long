@@ -6,11 +6,11 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 02:49:15 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:00:15 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	free_tab(char **tab)
 {

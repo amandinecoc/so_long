@@ -6,11 +6,11 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:43:39 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 02:44:25 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:06:33 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	check_borders_of_map(t_solong *data, int len_i, int len_j)
 {
@@ -48,7 +48,7 @@ int	check_square_and_borders_of_map(t_solong *data)
 		return (Failure_map);
 	while (data->tab_map[len_i])
 	{
-		if (ft_strlen(data->tab_map[len_i]) != len_j)
+		if (ft_strlen(data->tab_map[len_i]) != (long unsigned int)len_j)
 			return (Failure_map);
 		len_i++;
 	}

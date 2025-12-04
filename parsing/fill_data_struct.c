@@ -6,11 +6,11 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 02:56:00 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:05:37 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	check_and_fill_nbr(t_solong *data)
 {
@@ -51,7 +51,7 @@ char	*create_map_in_line(int fd)
 
 	line = get_next_line(fd);
 	if (!line)
-		return (Failure_malloc);
+		return (NULL);
 	map_in_line = ft_strdup("");
 	if (!map_in_line)
 		return (NULL);
@@ -71,7 +71,6 @@ char	*create_map_in_line(int fd)
 int	create_tab_map_and_flood_fill_map(t_solong *data)
 {
 	int		fd;
-	char	*tmp;
 	char	*map_in_line;
 
 	fd = open(data->ber_file, O_RDONLY);
@@ -90,8 +89,6 @@ int	create_tab_map_and_flood_fill_map(t_solong *data)
 
 int	initialize_data_struct(t_solong *data, char **argv)
 {
-	int	status;
-
 	data->ber_file = strdup(argv[1]);
 	if (!data->ber_file)
 		return (Failure_malloc);
@@ -102,12 +99,12 @@ int	initialize_data_struct(t_solong *data, char **argv)
 	data->nbr_player = 0;
 	data->exit = malloc(sizeof(int) * 2);
 	if (!data->exit)
-		return (free_all_data_struct(data), status);
+		return (free_all_data_struct(data), Failure_malloc);
 	data->exit[0] = 0;
 	data->exit[1] = 0;
     data->player = malloc(sizeof(int) * 2);
 	if (!data->player)
-		return (free_all_data_struct(data), status);
+		return (free_all_data_struct(data), Failure_malloc);
 	data->player[0] = 0;
 	data->player[1] = 0;
 	data->mouv = 0;

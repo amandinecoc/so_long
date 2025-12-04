@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 02:50:28 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 03:03:43 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ typedef struct s_solong
 
 /* ************************************************************************** */
 /*PARSING*/
+int			fill_data_struct(t_solong *data, char **argv);
+int			initialize_data_struct(t_solong *data, char **argv);
+int			create_tab_map_and_flood_fill_map(t_solong *data);
+char		*create_map_in_line(int fd);
+void		check_and_fill_nbr(t_solong *data);
+void		print_error_or_success(int status);
+void		free_all_data_struct(t_solong *data);
+void		free_tab(char **tab);
+int			check_caracters_of_map(t_solong *data);
+int			check_square_and_borders_of_map(t_solong *data);
+int			check_borders_of_map(t_solong *data, int len_i, int len_j);
 
 /* ************************************************************************** */
 /*SO_LONG*/
