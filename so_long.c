@@ -6,11 +6,33 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 07:56:43 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 09:17:08 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void tab_player(t_solong *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (data->tab_map[i])
+	{
+		j = 0;
+		while (data->tab_map[i][j])
+		{
+			if (data->tab_map[i][j] == 'P')
+			{
+				data->player[0] = i;
+				data->player[1] = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
