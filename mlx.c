@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:14:07 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 15:16:13 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:23:55 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,23 @@ void	initialize_wind(t_solong *data, t_mlx *mlx_data, int i, int j)
 int	initialize_assets(t_mlx *mlx_data, int height, int width)
 {
 	mlx_data->assets[0] = mlx_xpm_file_to_image(mlx_data->mlx,
-			"assets/Wall.xpm", &width, &height);
+			"textures/Wall.xpm", &width, &height);
 	if (mlx_data->assets[0] == NULL)
 		return (error_asset);
 	mlx_data->assets[1] = mlx_xpm_file_to_image(mlx_data->mlx,
-			"assets/Floor.xpm", &width, &height);
+			"textures/Floor.xpm", &width, &height);
 	if (mlx_data->assets[1] == NULL)
 		return (error_asset);
 	mlx_data->assets[2] = mlx_xpm_file_to_image(mlx_data->mlx,
-			"assets/Exit.xpm", &width, &height);
+			"textures/Exit.xpm", &width, &height);
 	if (mlx_data->assets[2] == NULL)
 		return (error_asset);
 	mlx_data->assets[3] = mlx_xpm_file_to_image(mlx_data->mlx,
-			"assets/Player.xpm", &width, &height);
+			"textures/Player.xpm", &width, &height);
 	if (mlx_data->assets[3] == NULL)
 		return (error_asset);
 	mlx_data->assets[4] = mlx_xpm_file_to_image(mlx_data->mlx,
-			"assets/Collectibles.xpm", &width, &height);
+			"textures/Collectibles.xpm", &width, &height);
 	if (mlx_data->assets[4] == NULL)
 		return (error_asset);
 	return (Success);
