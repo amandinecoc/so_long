@@ -6,12 +6,11 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 07:28:15 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:56:43 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	main(int argc, char **argv)
 {
@@ -24,6 +23,5 @@ int	main(int argc, char **argv)
 	status = parsing_so_long(&data, argv);
 	if (status != Success)
 		return (status);
-	
 	return (free_all_data_struct(&data), Success);
 }

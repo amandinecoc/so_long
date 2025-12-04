@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:43:39 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 07:35:34 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:58:01 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	check_borders_of_map(t_solong *data)
 				return (Failure_map);
 			else if (data->tab_map[data->height - 1][j] != '1')
 				return (Failure_map);
-			else if ((j == 0 || j == data->width - 1) && data->tab_map[i][j] != '1')
+			else if ((j == 0 || j == data->width - 1)
+				&& data->tab_map[i][j] != '1')
 				return (Failure_map);
 			j++;
 		}
@@ -44,7 +45,7 @@ int	check_square_and_borders_of_map(t_solong *data)
 		return (Failure_map);
 	while (data->tab_map[data->height])
 	{
-		if (ft_strlen(data->tab_map[data->height]) != (long unsigned int)data->width)
+		if ((int)ft_strlen(data->tab_map[data->height]) != data->width)
 			return (Failure_map);
 		data->height++;
 	}

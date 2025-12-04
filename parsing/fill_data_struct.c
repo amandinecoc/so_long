@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 07:54:10 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:56:12 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	fill_data_struct(t_solong *data, char **argv)
 
 int	parsing_so_long(t_solong *data, char **argv)
 {
-	int status;
+	int	status;
 
 	status = Success;
 	status = fill_data_struct(data, argv);
