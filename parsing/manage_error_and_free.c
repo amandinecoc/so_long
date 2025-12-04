@@ -6,11 +6,19 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 12:28:59 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:39:34 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	print_mouv(t_solong *data)
+{
+	data->mouv++;
+	ft_putstr_fd("My moves are smooth i did : ", 1);
+	ft_putnbr_fd(data->mouv, 1);
+	ft_putendl_fd(" steps !", 1);
+}
 
 void	free_tab(char **tab)
 {
@@ -38,10 +46,14 @@ void	free_all_data_struct(t_solong *data)
 		free(data->player);
 }
 
-void	print_error_or_success(int status)
+void	print_error_or_success(int status, t_solong *data)
 {
 	if (status == You_win)
-		ft_putendl_fd("You win", 1);
+	{
+		ft_putstr_fd("You Won in : ", 1);
+		ft_putnbr_fd(data->mouv, 1);
+		ft_putendl_fd(" steps !", 1);
+	}
 	if (status == Failure_nbr_arg)
 		ft_putendl_fd("ERROR : Invalid number of arguments", 2);
 	if (status == Failure_map)

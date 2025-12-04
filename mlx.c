@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:14:07 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 12:28:12 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:41:03 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	movement_key(int keycode, t_hooks *hooks)
 	if (keycode == ESC_KEY)
 	{
 		free_all_data_struct(hooks->data);
-		print_error_or_success(game_escape);
+		print_error_or_success(game_escape, hooks->data);
 		close_wind(hooks);
 	}
 	else if (keycode == W_KEY)
@@ -125,7 +125,7 @@ void	mlx_game(t_solong *data)
 	if (mlx_key_hook(mlx_data.win, movement_key, &hooks) == 0)
 	{
 		free_all_data_struct(data);
-		print_error_or_success(Failure_game);
+		print_error_or_success(Failure_game, data);
 		close_wind(&hooks);
 	}
 	mlx_loop(mlx_data.mlx);

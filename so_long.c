@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 12:09:00 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:40:17 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 
 	status = Success;
 	if (argc != 2)
-		return (print_error_or_success(Failure_nbr_arg), EXIT_FAILURE);
+		return (print_error_or_success(Failure_nbr_arg, &data), EXIT_FAILURE);
 	status = parsing_so_long(&data, argv);
 	if (status != Success)
 		return (status);
