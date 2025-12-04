@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 23:21:20 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 02:50:28 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 /* ************************************************************************** */
 /*INCLUDES*/
 # include "libft/libft.h"
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
-#include <errno.h> 
 # include <stdlib.h>
 # include <string.h>
+# include <sys/stat.h>
 # include <sys/types.h>
-#include <sys/stat.h>
 # include <unistd.h>
 
 /* ************************************************************************** */
@@ -30,10 +30,10 @@
 typedef enum e_status
 {
 	Success,
-    You_win,
+	You_win,
 	Failure_nbr_arg,
 	Failure_map,
-    Failure_malloc,
+	Failure_malloc,
 	Failure_open,
 }			t_status;
 
@@ -42,11 +42,12 @@ typedef struct s_solong
 	char	**tab_map;
 	char	**flood_fill_map;
 	char	*ber_file;
-	int     nbr_collectibles;
-    int     nbr_exit;
-    int     nbr_player;
-    int     *exit;
-    int     mouv;
+	int		nbr_collectibles;
+	int		nbr_exit;
+	int		nbr_player;
+	int		*exit;
+	int		*player;
+	int		mouv;
 }			t_solong;
 
 /* ************************************************************************** */
@@ -54,6 +55,5 @@ typedef struct s_solong
 
 /* ************************************************************************** */
 /*SO_LONG*/
-
 
 #endif

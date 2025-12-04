@@ -6,7 +6,7 @@
 #    By: amandine <amandine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/23 21:53:09 by amandine          #+#    #+#              #
-#    Updated: 2025/12/04 02:43:57 by amandine         ###   ########.fr        #
+#    Updated: 2025/12/04 02:56:32 by amandine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,9 +53,9 @@ SOURCES_LIBFT += libft/get_next_line/get_next_line.c
 SOURCES_LIBFT += libft/get_next_line/get_next_line_utils.c
 
 SOURCES_SO_LONG += so_long.c
-SOURCES_SO_LONG += fill_data_struct.c
-SOURCES_SO_LONG += manage_error_and_free.c
-SOURCES_SO_LONG += check_map.c
+SOURCES_SO_LONG += parsing/fill_data_struct.c
+SOURCES_SO_LONG += parsing/manage_error_and_free.c
+SOURCES_SO_LONG += parsing/check_map.c
 
 #Objets#####################################
 
