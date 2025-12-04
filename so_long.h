@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 11:29:09 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:43:51 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,22 @@ typedef enum e_status
 	Failure_malloc,
 	Failure_open,
 	Failure_game,
-}			t_status;
+}				t_status;
 
 typedef struct s_solong
 {
-	char	**tab_map;
-	char	**flood_fill_map;
-	char	*ber_file;
-	int		nbr_collectibles;
-	int		nbr_exit;
-	int		nbr_player;
-	int		height;
-	int		width;
-	int		*exit;
-	int		*player;
-	int		mouv;
-}			t_solong;
+	char		**tab_map;
+	char		**flood_fill_map;
+	char		*ber_file;
+	int			nbr_collectibles;
+	int			nbr_exit;
+	int			nbr_player;
+	int			height;
+	int			width;
+	int			*exit;
+	int			*player;
+	int			mouv;
+}				t_solong;
 
 typedef struct s_mlx
 {
@@ -77,28 +77,33 @@ typedef struct s_hooks
 
 /* ************************************************************************** */
 /*PARSING*/
-int			parsing_so_long(t_solong *data, char **argv);
-int			fill_data_struct(t_solong *data, char **argv);
-int			initialize_data_struct(t_solong *data, char **argv);
-int			create_tab_map_and_flood_fill_map(t_solong *data);
-char		*create_map_in_line(int fd);
-void		check_and_fill_nbr(t_solong *data);
-void		print_error_or_success(int status);
-void		free_all_data_struct(t_solong *data);
-void		free_tab(char **tab);
-int			check_caracters_of_map(t_solong *data);
-int			check_square_and_borders_of_map(t_solong *data);
-int			check_borders_of_map(t_solong *data);
-int			check_flood_fill_map(t_solong *data);
-int			flood_fill_map(t_solong *data, int x, int y);
+int				parsing_so_long(t_solong *data, char **argv);
+int				fill_data_struct(t_solong *data, char **argv);
+int				initialize_data_struct(t_solong *data, char **argv);
+int				create_tab_map_and_flood_fill_map(t_solong *data);
+char			*create_map_in_line(int fd);
+void			check_and_fill_nbr(t_solong *data);
+void			print_error_or_success(int status);
+void			free_all_data_struct(t_solong *data);
+void			free_tab(char **tab);
+int				check_caracters_of_map(t_solong *data);
+int				check_square_and_borders_of_map(t_solong *data);
+int				check_borders_of_map(t_solong *data);
+int				check_flood_fill_map(t_solong *data);
+int				flood_fill_map(t_solong *data, int x, int y);
 
 /* ************************************************************************** */
 /*SO_LONG*/
-void tab_player(t_solong *data);
-void movement(t_solong *data, char map, int x, int y);
-void key_left(t_solong *data);
-// void key_right(t_solong *data);
-void key_down(t_solong *data);
-void key_high(t_solong *data);
+void			tab_player(t_solong *data);
+void movement(t_hooks *hooks, char map, int x, int y);
+void key_left(t_hooks *hooks);
+void			key_right(t_hooks *hooks);
+void			key_down(t_hooks *hooks);
+void			key_high(t_hooks *hooks);
+void			mlx_game(t_solong *data);
+void			movement_key(int key, t_solong *data, t_hooks *hooks);
+void			initialize_assets(t_mlx *mlx_data);
+void			initialize_wind(t_solong *data, t_mlx *mlx_data, int i, int j);
+int				close_wind(t_hooks *hooks);
 
 #endif

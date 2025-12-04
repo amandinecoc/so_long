@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:14:07 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 11:30:06 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:47:44 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	close_wind(t_hooks *hooks)
 	free(hooks->mlx_data->mlx);
 	free(hooks->mlx_data->assets);
 	free(hooks->data->exit);
-	ft_free_tab(hooks->data->tab_map, 0);
+	free_tab(hooks->data->tab_map);
 	exit(EXIT_SUCCESS);
 }
 
@@ -86,18 +86,18 @@ void	initialize_assets(t_mlx *mlx_data)
 												&height);
 }
 
-void	movement_key(int key, t_solong *data, t_hooks *hooks)
+void	movement_key(int key, t_hooks *hooks)
 {
 	if (key == ESC_KEY)
 		close_wind(hooks);
 	else if (key == W_KEY)
-		key_high(data);
+		key_high(hooks);
 	else if (key == S_KEY)
-		key_down(data);
+		key_down(hooks);
 	else if (key == D_KEY)
-		key_right(data);
+		key_right(hooks);
 	else if (key == A_KEY)
-		key_left(data);
+		key_left(hooks);
 	initialize_wind(hooks->data, hooks->mlx_data, 0, 0);
 }
 
