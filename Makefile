@@ -6,7 +6,7 @@
 #    By: amandine <amandine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/23 21:53:09 by amandine          #+#    #+#              #
-#    Updated: 2025/12/04 06:51:42 by amandine         ###   ########.fr        #
+#    Updated: 2025/12/04 10:42:00 by amandine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SOURCES_SO_LONG += parsing/fill_data_int_struct.c
 SOURCES_SO_LONG += parsing/manage_error_and_free.c
 SOURCES_SO_LONG += parsing/check_map.c
 SOURCES_SO_LONG += parsing/flood_fill_map.c
+SOURCES_SO_LONG += movement.c
 
 #Objets#####################################
 
@@ -112,10 +113,11 @@ CFLAGS += -g3
 #Rules######################################
 all:
 	$(MAKE) all_libft
+	$(MAKE) -C ./minilibx-linux
 	$(MAKE) $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(SOURCES_SO_LONG) $(INCLUDES) $(INCLUDES_LIBFT) $(NAME_LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(SOURCES_SO_LONG) $(INCLUDES) $(INCLUDES_LIBFT) -I./minilibx-linux/libmlx.a -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz $(NAME_LIBFT) -o $(NAME)
 
 clean: fclean_libft
 

@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:08:16 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 09:49:24 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 09:51:07 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,5 @@ void movement(t_solong *data, char map, int x, int y)
             data->tab_map[x][y] = 'E';
     }
     if (map == 'E' && data->nbr_collectibles == 0)
-        // end_game
+        // end_game;
 }
