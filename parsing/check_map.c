@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:43:39 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 05:08:32 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 06:06:34 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	check_borders_of_map(t_solong *data)
 
 	i = 0;
 	j = 0;
-	while (i <= data->len_i)
+	while (i < data->len_i)
 	{
 		j = 0;
-		while (j <= data->len_j)
+		while (j < data->len_j)
 		{
 			if (data->tab_map[0][j] != '1')
 				return (Failure_map);
-			else if (data->tab_map[data->len_i][j] != '1')
+			else if (data->tab_map[data->len_i - 1][j] != '1')
 				return (Failure_map);
 			else if ((j == 0 || j == data->len_j) && data->tab_map[i][j] != '1')
 				return (Failure_map);
@@ -66,11 +66,11 @@ int	check_caracters_of_map(t_solong *data)
 		j = 0;
 		while (data->tab_map[i][j])
 		{
-			if (data->tab_map[i][j] != '0' || data->tab_map[i][j] != '1'
-				|| data->tab_map[i][j] != 'C' || data->tab_map[i][j] != 'E'
-				|| data->tab_map[i][j] != 'P')
+			if (data->tab_map[i][j] != '0' && data->tab_map[i][j] != '1'
+				&& data->tab_map[i][j] != 'C' && data->tab_map[i][j] != 'E'
+				&& data->tab_map[i][j] != 'P')
 				return (Failure_map);
-			i++;
+			j++;
 		}
 		i++;
 	}

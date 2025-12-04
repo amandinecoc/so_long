@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 05:05:13 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 05:40:50 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void		free_all_data_struct(t_solong *data);
 void		free_tab(char **tab);
 int			check_caracters_of_map(t_solong *data);
 int			check_square_and_borders_of_map(t_solong *data);
-int			check_borders_of_map(t_solong *data, int len_i, int len_j);
+int			check_borders_of_map(t_solong *data);
+int			check_flood_fill_map(t_solong *data);
+int			flood_fill_map(t_solong *data, int x, int y);
 
 /* ************************************************************************** */
 /*SO_LONG*/

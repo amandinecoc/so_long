@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 05:01:00 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 05:32:09 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 05:54:56 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	check_flood_fill_map(t_solong *data)
 	x = data->player[0];
 	y = data->player[1];
 	if (x < 0 || x >= data->len_i || y < 0 || y >= data->len_j)
-		return (Failure_map);
+		return (printf("x = %d y = %d\nleni = %d lenj = %d\n", x, y, data->len_i, data->len_j), Failure_map);
     if (flood_fill_map(data, x, y) != Success)
         return (Failure_map);
+    return (Success);
 }

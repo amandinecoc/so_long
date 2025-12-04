@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 05:05:54 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 05:39:54 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	initialize_data_struct(t_solong *data, char **argv)
 	data->nbr_collectibles = 0;
 	data->nbr_exit = 0;
 	data->nbr_player = 0;
-	data->len_i;
-	data->len_j;
+	data->len_i = 0;
+	data->len_j = 0;
 	data->exit = malloc(sizeof(int) * 2);
 	if (!data->exit)
 		return (free_all_data_struct(data), Failure_malloc);
