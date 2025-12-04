@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 10:14:07 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 11:47:44 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:28:12 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	close_wind(t_hooks *hooks)
 	mlx_destroy_display(hooks->mlx_data->mlx);
 	free(hooks->mlx_data->mlx);
 	free(hooks->mlx_data->assets);
-	free(hooks->data->exit);
-	free_tab(hooks->data->tab_map);
 	exit(EXIT_SUCCESS);
 }
 
@@ -65,7 +63,7 @@ void	initialize_assets(t_mlx *mlx_data)
 	height = 32;
 	width = 32;
 	mlx_data->assets[0] = mlx_xpm_file_to_image(mlx_data->mlx,
-												"assests/Wall.xpm",
+												"assets/Wall.xpm",
 												&width,
 												&height);
 	mlx_data->assets[1] = mlx_xpm_file_to_image(mlx_data->mlx,
@@ -86,19 +84,24 @@ void	initialize_assets(t_mlx *mlx_data)
 												&height);
 }
 
-void	movement_key(int key, t_hooks *hooks)
+int	movement_key(int keycode, t_hooks *hooks)
 {
-	if (key == ESC_KEY)
+	if (keycode == ESC_KEY)
+	{
+		free_all_data_struct(hooks->data);
+		print_error_or_success(game_escape);
 		close_wind(hooks);
-	else if (key == W_KEY)
+	}
+	else if (keycode == W_KEY)
 		key_high(hooks);
-	else if (key == S_KEY)
+	else if (keycode == S_KEY)
 		key_down(hooks);
-	else if (key == D_KEY)
+	else if (keycode == D_KEY)
 		key_right(hooks);
-	else if (key == A_KEY)
+	else if (keycode == A_KEY)
 		key_left(hooks);
 	initialize_wind(hooks->data, hooks->mlx_data, 0, 0);
+	return (0);
 }
 
 void	mlx_game(t_solong *data)
@@ -106,6 +109,7 @@ void	mlx_game(t_solong *data)
 	t_mlx	mlx_data;
 	t_hooks	hooks;
 
+	
 	hooks.data = data;
 	hooks.mlx_data = &mlx_data;
 	mlx_data.mlx = mlx_init();
@@ -120,8 +124,9 @@ void	mlx_game(t_solong *data)
 	mlx_hook(mlx_data.win, 17, 0, close_wind, &hooks);
 	if (mlx_key_hook(mlx_data.win, movement_key, &hooks) == 0)
 	{
+		free_all_data_struct(data);
 		print_error_or_success(Failure_game);
-		exit(EXIT_FAILURE);
+		close_wind(&hooks);
 	}
 	mlx_loop(mlx_data.mlx);
 }

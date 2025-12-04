@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 05:01:00 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 07:56:31 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:23:37 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ int	check_flood_fill_map(t_solong *data)
 {
 	int	x;
 	int	y;
+	int cache_collectibles;
 
+	cache_collectibles = data->nbr_collectibles;
 	x = data->player[0];
 	y = data->player[1];
 	if (x <= 0 || x >= data->height || y <= 0 || y >= data->width)
 		return (Failure_map);
 	if (flood_fill_map(data, x, y) != Success)
 		return (Failure_map);
+	data->nbr_collectibles = cache_collectibles;
 	return (Success);
 }

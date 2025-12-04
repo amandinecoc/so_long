@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:22 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 09:17:08 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:09:00 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	main(int argc, char **argv)
 	status = parsing_so_long(&data, argv);
 	if (status != Success)
 		return (status);
+	mlx_game(&data);
 	return (free_all_data_struct(&data), Success);
 }

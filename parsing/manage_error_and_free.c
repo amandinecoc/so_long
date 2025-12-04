@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 11:29:26 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:28:59 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_all_data_struct(t_solong *data)
 void	print_error_or_success(int status)
 {
 	if (status == You_win)
-		ft_putendl_fd("You win !", 1);
+		ft_putendl_fd("You win", 1);
 	if (status == Failure_nbr_arg)
 		ft_putendl_fd("ERROR : Invalid number of arguments", 2);
 	if (status == Failure_map)
@@ -52,4 +52,6 @@ void	print_error_or_success(int status)
 		ft_putendl_fd("ERROR : file descriptor", 2);
 	if (status == Failure_game)
 		ft_putendl_fd("ERROR : game", 2);
+	if (status == game_escape)
+		ft_putendl_fd("You escaped the Game !", 1);
 }

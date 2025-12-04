@@ -6,7 +6,7 @@
 #    By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/23 21:53:09 by amandine          #+#    #+#              #
-#    Updated: 2025/12/04 11:38:11 by acocoual         ###   ########.fr        #
+#    Updated: 2025/12/04 12:01:57 by acocoual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,8 +118,8 @@ all:
 	$(MAKE) $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(SOURCES_SO_LONG) $(INCLUDES) $(INCLUDES_LIBFT) -I./minilibx-linux/libmlx.a -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz $(NAME_LIBFT) -o $(NAME)
-
+	$(CC) $(CFLAGS) $(SOURCES_SO_LONG) -I./minilibx-linux/libmlx.a -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz $(NAME_LIBFT) -o $(NAME)
+	
 clean: fclean_libft
 
 fclean: clean

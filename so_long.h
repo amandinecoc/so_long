@@ -6,7 +6,7 @@
 /*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 19:46:35 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/04 11:43:51 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:28:23 by acocoual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /* ************************************************************************** */
 /*INCLUDES*/
+# include "./minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
@@ -44,6 +45,7 @@ typedef enum e_status
 	Failure_malloc,
 	Failure_open,
 	Failure_game,
+	game_escape,
 }				t_status;
 
 typedef struct s_solong
@@ -95,13 +97,13 @@ int				flood_fill_map(t_solong *data, int x, int y);
 /* ************************************************************************** */
 /*SO_LONG*/
 void			tab_player(t_solong *data);
-void movement(t_hooks *hooks, char map, int x, int y);
+void movement(t_hooks *hooks, char *map, int x, int y);
 void key_left(t_hooks *hooks);
 void			key_right(t_hooks *hooks);
 void			key_down(t_hooks *hooks);
 void			key_high(t_hooks *hooks);
 void			mlx_game(t_solong *data);
-void			movement_key(int key, t_solong *data, t_hooks *hooks);
+int			movement_key(int keycode, t_hooks *hooks);
 void			initialize_assets(t_mlx *mlx_data);
 void			initialize_wind(t_solong *data, t_mlx *mlx_data, int i, int j);
 int				close_wind(t_hooks *hooks);
