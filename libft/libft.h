@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 16:26:42 by acocoual          #+#    #+#             */
-/*   Updated: 2025/12/03 23:09:39 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:24:40 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line/get_next_line.h"
 
 int				ft_atoi(const char *nptr);
 void			ft_bzero(void *s, size_t n);

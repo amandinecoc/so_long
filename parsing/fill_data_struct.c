@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:38:53 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:50:42 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:54:10 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*create_map_in_line(int fd)
 		return (NULL);
 	map_in_line = ft_strdup("");
 	if (!map_in_line)
-		return (NULL);
+		return (free(line), NULL);
 	while (line != NULL)
 	{
 		tmp = map_in_line;
@@ -48,11 +48,12 @@ int	create_tab_map_and_flood_fill_map(t_solong *data)
 	map_in_line = create_map_in_line(fd);
 	data->tab_map = ft_split(map_in_line, '\n');
 	if (!data->tab_map)
-		return (free(map_in_line), Failure_malloc);
+		return (close(fd), free(map_in_line), Failure_malloc);
 	data->flood_fill_map = ft_split(map_in_line, '\n');
 	if (!data->flood_fill_map)
-		return (free(map_in_line), Failure_malloc);
+		return (close(fd), free(map_in_line), Failure_malloc);
 	free(map_in_line);
+	close(fd);
 	return (Success);
 }
 
@@ -73,7 +74,7 @@ int	initialize_data_struct(t_solong *data, char **argv)
 		return (free_all_data_struct(data), Failure_malloc);
 	data->exit[0] = 0;
 	data->exit[1] = 0;
-    data->player = malloc(sizeof(int) * 2);
+	data->player = malloc(sizeof(int) * 2);
 	if (!data->player)
 		return (free_all_data_struct(data), Failure_malloc);
 	data->player[0] = 0;
@@ -89,17 +90,20 @@ int	fill_data_struct(t_solong *data, char **argv)
 	status = initialize_data_struct(data, argv);
 	if (status != Success)
 		return (status);
-	if (ft_strnstr(data->ber_file, ".ber", ft_strlen(data->ber_file)) != NULL)
-	{
-		if ((ft_strlen(data->ber_file) < 5)
-			|| data->ber_file[ft_strlen(data->ber_file) - 5] <= 32
-			|| data->ber_file[ft_strlen(data->ber_file) - 5] >= 127)
-			// ne peut pas etre . ou /
-			return (free_all_data_struct(data), Failure_map);
-	}
+	if (data->ber_file[ft_strlen(data->ber_file) - 1] != 'r'
+		&& data->ber_file[ft_strlen(data->ber_file) - 2] != 'e'
+		&& data->ber_file[ft_strlen(data->ber_file) - 3] != 'b'
+		&& data->ber_file[ft_strlen(data->ber_file) - 4] != '.')
+		return (free_all_data_struct(data), Failure_map);
+	if ((ft_strlen(data->ber_file) < 5)
+		|| data->ber_file[ft_strlen(data->ber_file) - 5] <= 32
+		|| data->ber_file[ft_strlen(data->ber_file) - 5] >= 127
+		|| data->ber_file[ft_strlen(data->ber_file) - 5] == '.'
+		|| data->ber_file[ft_strlen(data->ber_file) - 5] == '/')
+		return (free_all_data_struct(data), Failure_map);
 	status = create_tab_map_and_flood_fill_map(data);
 	if (status != Success)
-		return (free(data->ber_file), status);
+		return (free_all_data_struct(data), status);
 	check_and_fill_nbr(data);
 	if ((data->nbr_collectibles < 1) || (data->nbr_exit != 1)
 		|| (data->nbr_player != 1))
@@ -107,20 +111,20 @@ int	fill_data_struct(t_solong *data, char **argv)
 	return (Success);
 }
 
-int parsing_so_long(t_solong *data, char **argv)
+int	parsing_so_long(t_solong *data, char **argv)
 {
-	int			status;
+	int status;
 
 	status = Success;
 	status = fill_data_struct(data, argv);
 	if (status != Success)
 		return (print_error_or_success(status), status);
 	if (check_caracters_of_map(data) != Success)
-		return (free_all_data_struct(data),
-			print_error_or_success(Failure_map), Failure_map);
+		return (free_all_data_struct(data), print_error_or_success(Failure_map),
+			Failure_map);
 	if (check_square_and_borders_of_map(data) != Success)
-		return (free_all_data_struct(data),
-			print_error_or_success(Failure_map), Failure_map);
+		return (free_all_data_struct(data), print_error_or_success(Failure_map),
+			Failure_map);
 	status = check_flood_fill_map(data);
 	if (status != Success)
 		return (free_all_data_struct(data), print_error_or_success(status),

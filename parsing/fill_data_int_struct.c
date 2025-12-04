@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 06:46:09 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:50:07 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:30:56 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	check_and_fill_nbr(t_solong *data)
 		}
 		i++;
 	}
-    printf("exitx = %d exity = %d\nplayerx = %d playery = %d\n", data->exit[0], data->exit[1], data->player[0], data->player[1]);
+    // printf("exitx = %d exity = %d\nplayerx = %d playery = %d\n", data->exit[0], data->exit[1], data->player[0], data->player[1]);
 }

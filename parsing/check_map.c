@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:43:39 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:36:07 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:35:34 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_borders_of_map(t_solong *data)
 				return (Failure_map);
 			else if (data->tab_map[data->height - 1][j] != '1')
 				return (Failure_map);
-			else if ((j == 0 || j == data->width) && data->tab_map[i][j] != '1')
+			else if ((j == 0 || j == data->width - 1) && data->tab_map[i][j] != '1')
 				return (Failure_map);
 			j++;
 		}

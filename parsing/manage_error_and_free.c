@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 02:42:02 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:56:53 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:39:50 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void	print_error_or_success(int status)
 		ft_putendl_fd("ERROR : Invalid map", 2);
 	if (status == Failure_malloc)
 		ft_putendl_fd("ERROR : memory allocation", 2);
+	if (status == Failure_open)
+		ft_putendl_fd("ERROR : file descriptor", 2);
 }

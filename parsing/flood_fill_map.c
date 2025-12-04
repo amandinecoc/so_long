@@ -6,7 +6,7 @@
 /*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 05:01:00 by amandine          #+#    #+#             */
-/*   Updated: 2025/12/04 06:45:11 by amandine         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:36:15 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_flood_fill_map(t_solong *data)
 
 	x = data->player[0];
 	y = data->player[1];
-	if (x < 0 || x >= data->height || y < 0 || y >= data->width)
+	if (x <= 0 || x >= data->height || y <= 0 || y >= data->width)
 		return (Failure_map);
     if (flood_fill_map(data, x, y) != Success)
         return (Failure_map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:21:33 by amandine          #+#    #+#             */
-/*   Updated: 2025/09/11 20:15:42 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:26:45 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	fill_remain_in_buffer(int i, char **tmp, char *buffer, char **line)
 		buffer[j++] = (*tmp)[i];
 		(*tmp)[i++] = '\0';
 	}
-	*line = ft_strjoin(*line, *tmp);
+	*line = ft_strjoin_gnl(*line, *tmp);
 	if (*line == NULL)
-		return (ft_bzero(buffer, BUFFER_SIZE), 2);
+		return (ft_bzero_gnl(buffer, BUFFER_SIZE), 2);
 	return (EXIT_SUCCESS);
 }
 
@@ -65,19 +65,19 @@ int	check_n_in_next_line(char **line, char *buffer, int fd, int len_buf)
 		if (len_buf < 0)
 			return (EXIT_FAILURE);
 		buffer[len_buf] = '\0';
-		tmp = ft_strdup(buffer);
+		tmp = ft_strdup_gnl(buffer);
 		if (tmp == NULL)
-			return (ft_bzero(buffer, BUFFER_SIZE), free(*line), 2);
-		ft_bzero(buffer, len_buf);
+			return (ft_bzero_gnl(buffer, BUFFER_SIZE), free(*line), 2);
+		ft_bzero_gnl(buffer, len_buf);
 		while (tmp[i] != '\0')
 		{
 			if (tmp[i] == '\n')
 				return (fill_remain_in_buffer(i, &tmp, buffer, line));
 			i++;
 		}
-		*line = ft_strjoin(*line, tmp);
+		*line = ft_strjoin_gnl(*line, tmp);
 		if (*line == NULL)
-			return (ft_bzero(buffer, BUFFER_SIZE), 2);
+			return (ft_bzero_gnl(buffer, BUFFER_SIZE), 2);
 	}
 	return (EXIT_FAILURE);
 }
@@ -90,12 +90,12 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0)
-		return (ft_bzero(buffer, BUFFER_SIZE), NULL);
+		return (ft_bzero_gnl(buffer, BUFFER_SIZE), NULL);
 	len_buf = BUFFER_SIZE;
-	line = ft_strdup(buffer);
+	line = ft_strdup_gnl(buffer);
 	if (line == NULL)
 		return (NULL);
-	ft_bzero(buffer, len_buf);
+	ft_bzero_gnl(buffer, len_buf);
 	if (check_n_in_remaining_line(&line, buffer) == EXIT_SUCCESS)
 		return (line);
 	size = check_n_in_next_line(&line, buffer, fd, len_buf);
@@ -103,8 +103,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	else if (size == EXIT_SUCCESS)
 		return (line);
-	size = ft_strlen(line);
+	size = ft_strlen_gnl(line);
 	if (size > 0)
 		return (line);
-	return (ft_bzero(buffer, BUFFER_SIZE), free((void *)line), NULL);
+	return (ft_bzero_gnl(buffer, BUFFER_SIZE), free((void *)line), NULL);
 }

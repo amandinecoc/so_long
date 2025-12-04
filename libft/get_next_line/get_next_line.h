@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acocoual <acocoual@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amandine <amandine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:22:32 by amandine          #+#    #+#             */
-/*   Updated: 2025/09/11 20:16:01 by acocoual         ###   ########.fr       */
+/*   Updated: 2025/12/04 07:26:58 by amandine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*get_next_line(int fd);
 int		check_n_in_remaining_line(char **line, char *buffer);
 int		check_n_in_next_line(char **line, char *buffer, int fd, int len_buf);
 int		fill_remain_in_buffer(int i, char **tmp, char *buffer, char **line);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char *s1, char *s2);
-void	ft_bzero(void *s, int n);
+size_t	ft_strlen_gnl(const char *s);
+char	*ft_strdup_gnl(const char *s);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+void	ft_bzero_gnl(void *s, int n);
 
 #endif
